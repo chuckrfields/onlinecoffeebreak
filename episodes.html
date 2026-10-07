@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Episodes — Your Online Coffee Break</title>
+  <meta name="description" content="Highlighted episodes from the Your Online Coffee Break archive.">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="index.html"><img src="assets/logo.svg" alt="" width="54" height="54"><span>Your Online Coffee Break</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav" class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="episodes.html" aria-current="page">Episodes</a>
+        <a href="about.html">About</a>
+        <a href="subscribe.html">Subscribe</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    <div class="page-intro">
+      <p class="eyebrow">Archive</p>
+      <h1>Episodes</h1>
+      <p>A highlighted set rebuilt from the January 2021 and January 2023 Wayback captures, Apple Podcasts, Spotify, and the YouTube channel. This is not the full 160-plus catalog. Audio files stayed on the old Blubrry feed and are not rehosted here.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filter episodes">
+      <button class="chip" type="button" data-category="All" aria-pressed="true">All</button>
+      <button class="chip" type="button" data-category="Music">Music</button>
+      <button class="chip" type="button" data-category="Space">Space</button>
+      <button class="chip" type="button" data-category="Film">Film</button>
+      <button class="chip" type="button" data-category="Faith">Faith</button>
+    </div>
+    <div id="episode-list" class="episode-list"></div>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-row"><p>Your Online Coffee Break archive</p><p><a href="index.html">Home</a></p></div></footer>
+  <script src="js/site.js"></script>
+</body>
+</html>
