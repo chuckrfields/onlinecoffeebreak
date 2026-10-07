@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Online Coffee Break</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --ink: #2b241f;
+  --muted: #7c7c7c;
+  --coral: #e65a4b;
+  --coral-dark: #c4473a;
+  --cream: #f7f1ea;
+  --line: #eadfd4;
+  --espresso: #1a120e;
+  --white: #fff;
+  --shadow: 0 10px 30px rgba(26, 18, 14, 0.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  color: var(--muted);
+  background: var(--white);
+  line-height: 1.6;
+}
+img { max-width: 100%; height: auto; }
+a { color: var(--coral); text-decoration: none; }
+a:hover { color: var(--coral-dark); }
+h1, h2, h3 { color: var(--ink); line-height: 1.2; font-weight: 600; }
+.skip {
+  position: absolute; left: -999px; top: 0;
+}
+.skip:focus { left: 8px; top: 8px; background: #fff; padding: 8px; z-index: 5; }
+.wrap { width: min(1080px, calc(100% - 32px)); margin: 0 auto; }
+.site-header {
+  position: sticky; top: 0; z-index: 4;
+  background: rgba(255,255,255,.94);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+}
+.header-row, .footer-row, .section-head, .hero-actions, .filters {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.header-row { min-height: 76px; }
+.brand { display: flex; align-items: center; gap: 12px; color: var(--ink); font-weight: 600; }
+.brand span { letter-spacing: .01em; }
+.site-nav { display: flex; gap: 18px; }
+.site-nav a { color: var(--ink); font-size: .95rem; }
+.site-nav a[aria-current="page"] { color: var(--coral); }
+.nav-toggle { display: none; border: 1px solid var(--line); background: #fff; border-radius: 999px; padding: 8px 14px; }
+.hero { background: linear-gradient(180deg, var(--cream), #fff 80%); padding: 48px 0 20px; }
+.hero-grid, .split, .contact-grid { display: grid; grid-template-columns: 1.4fr .8fr; gap: 32px; align-items: center; }
+h1 { font-size: clamp(2rem, 4vw, 3.4rem); margin: 8px 0 12px; }
+.lede { font-size: 1.05rem; max-width: 62ch; }
+.eyebrow { text-transform: uppercase; letter-spacing: .14em; font-size: .75rem; color: var(--coral); margin: 0 0 6px; font-weight: 600; }
+.hero-card, .panel, .episode, .stat {
+  background: #fff; border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow);
+}
+.hero-card { padding: 24px; text-align: center; }
+.btn, button.chip {
+  display: inline-block; background: var(--coral); color: #fff; border: 0; border-radius: 999px;
+  padding: 10px 16px; font: inherit; cursor: pointer;
+}
+.btn:hover, button.chip:hover, button.chip[aria-pressed="true"] { background: var(--coral-dark); color: #fff; }
+.btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+.btn-ghost:hover { background: var(--espresso); color: #fff; }
+.section { padding: 36px 0; }
+.section-head { margin-bottom: 16px; }
+.section-head h2, .panel h2, .band h2 { margin: 0 0 8px; }
+.episode-list { display: grid; gap: 14px; }
+.episode { padding: 18px 18px 14px; }
+.episode h3 { margin: 0 0 6px; font-size: 1.15rem; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px; font-size: .82rem; margin-bottom: 8px; }
+.meta span, .pill { background: var(--cream); color: var(--ink); border-radius: 999px; padding: 2px 8px; }
+.episode p { margin: 0 0 10px; }
+.band { background: var(--espresso); color: #efe7df; padding: 42px 0; }
+.band h2, .band p { color: #efe7df; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.stat { padding: 18px; }
+.stat strong { display: block; color: var(--coral); font-size: 1.6rem; }
+.filters { justify-content: flex-start; flex-wrap: wrap; margin-bottom: 16px; }
+button.chip { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+.page-intro { padding: 36px 0 8px; }
+.panel { padding: 22px; }
+.contact-grid { align-items: start; }
+.site-footer { border-top: 1px solid var(--line); padding: 22px 0 32px; font-size: .9rem; }
+@media (max-width: 800px) {
+  .hero-grid, .split, .contact-grid, .stats { grid-template-columns: 1fr; }
+  .nav-toggle { display: inline-block; }
+  .site-nav { display: none; position: absolute; top: 76px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--line); padding: 12px 16px 16px; flex-direction: column; }
+  .site-nav.open { display: flex; }
+}
+
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="#top"><svg width="54" height="54" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Your Online Coffee Break">
+  <circle cx="100" cy="100" r="98" fill="#111"/>
+  <circle cx="100" cy="100" r="90" fill="none" stroke="#fff" stroke-width="2"/>
+  <defs>
+    <path id="ring" d="M100,100 m-68,0 a68,68 0 1,1 136,0 a68,68 0 1,1 -136,0"/>
+  </defs>
+  <text fill="#fff" font-family="Poppins, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2.4">
+    <textPath href="#ring" startOffset="4%">YOUR ONLINE COFFEE BREAK</textPath>
+  </text>
+  <text x="100" y="156" text-anchor="middle" fill="#fff" font-family="Poppins, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="3">PODCAST</text>
+  <g fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round">
+    <path d="M86 58c2-8 8-10 8-16"/>
+    <path d="M100 54c2-8 7-9 7-15"/>
+    <path d="M114 58c2-8 6-9 6-15"/>
+  </g>
+  <path fill="#fff" d="M72 92c2 24 10 38 28 38s26-14 28-38c-8 6-16 8-28 8s-20-2-28-8z"/>
+  <path fill="none" stroke="#fff" stroke-width="4" d="M78 96h44c2 22-6 36-22 36s-24-14-22-36z"/>
+  <path fill="#fff" d="M122 104c10 2 16 8 16 16 0 10-8 16-18 16"/>
+</svg><span>Your Online Coffee Break</span></a>
+      <nav class="site-nav">
+        <a href="#episodes">Episodes</a>
+        <a href="#about">About</a>
+        <a href="#subscribe">Subscribe</a>
+        <a href="https://stagevaultpod.com">Stage Vault</a>
+      </nav>
+    </div>
+  </header>
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Podcast archive · 2017–2023</p>
+        <h1>Short interviews over coffee.</h1>
+        <p class="lede">Welcome to “Your Online Coffee Break,” episodes that inspire, educate, and entertain with host Chuck Fields. Bite-sized conversations with musicians, actors, authors, scientists, and the people taking us above the world.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#episodes">Browse the archive</a>
+          <a class="btn btn-ghost" href="https://www.youtube.com/@youronlinecoffeebreak">Watch on YouTube</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <svg width="120" height="120" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Your Online Coffee Break">
+  <circle cx="100" cy="100" r="98" fill="#111"/>
+  <circle cx="100" cy="100" r="90" fill="none" stroke="#fff" stroke-width="2"/>
+  <defs>
+    <path id="ring" d="M100,100 m-68,0 a68,68 0 1,1 136,0 a68,68 0 1,1 -136,0"/>
+  </defs>
+  <text fill="#fff" font-family="Poppins, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2.4">
+    <textPath href="#ring" startOffset="4%">YOUR ONLINE COFFEE BREAK</textPath>
+  </text>
+  <text x="100" y="156" text-anchor="middle" fill="#fff" font-family="Poppins, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="3">PODCAST</text>
+  <g fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round">
+    <path d="M86 58c2-8 8-10 8-16"/>
+    <path d="M100 54c2-8 7-9 7-15"/>
+    <path d="M114 58c2-8 6-9 6-15"/>
+  </g>
+  <path fill="#fff" d="M72 92c2 24 10 38 28 38s26-14 28-38c-8 6-16 8-28 8s-20-2-28-8z"/>
+  <path fill="none" stroke="#fff" stroke-width="4" d="M78 96h44c2 22-6 36-22 36s-24-14-22-36z"/>
+  <path fill="#fff" d="M122 104c10 2 16 8 16 16 0 10-8 16-18 16"/>
+</svg>
+        <p>PopCon 2021 winner, Pop Culture. 2020 Podcast Awards Top 10 finalist, Entertainment.</p>
+      </aside>
+    </div>
+  </section>
+  <main>
+    <section class="wrap section" id="episodes">
+      <div class="section-head"><h2>From the archive</h2></div>
+      <div id="episode-list" class="episode-list"></div>
+    </section>
+    <section class="band">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">The show has wrapped</p>
+          <h2>The conversations continue on Stage Vault.</h2>
+          <p>Your Online Coffee Break has wrapped, but the interviews live on here and on YouTube. Stage Vault continues the journey.</p>
+          <p><a class="btn" href="https://stagevaultpod.com">Visit Stage Vault</a></p>
+        </div>
+        <div id="about">
+          <p class="eyebrow">Need more space?</p>
+          <h2>Your Space Journey</h2>
+          <p>The sister series on space exploration lives at Your Space Journey.</p>
+          <p><a class="btn btn-ghost" href="https://yourspacejourney.com">YourSpaceJourney.com</a></p>
+        </div>
+      </div>
+    </section>
+    <section class="wrap section" id="subscribe">
+      <h2>Subscribe</h2>
+      <p><a href="https://podcasts.apple.com/us/podcast/your-online-coffee-break/id1312003775">Apple Podcasts</a> · <a href="https://open.spotify.com/show/3PTh8YE6Fi4L7sUTMGk0wC">Spotify</a> · <a href="https://www.youtube.com/@youronlinecoffeebreak">YouTube</a></p>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-row"><p>Archive recreation. Source: github.com/chuckrfields/onlinecoffeebreak</p></div></footer>
+  <script>
+  const episodes = [
+  {"id":"elliott-wallach","date":"2023-11-01","season":"Later","title":"God of Heaven and Earth — Elliott Wallach","guest":"Elliott Wallach","category":"Faith","minutes":"19:06","summary":"Producer Elliott Wallach on the film God of Heaven and Earth, the Star of Bethlehem, and a proposed April 3, 33 AD crucifixion date.","youtube":"","links":[]},
+  {"id":"craig-smith","date":"2022-11-03","season":"Later","title":"Craig Smith — Awake in the Dawn","guest":"Craig Smith","category":"Faith","minutes":"23:00","summary":"Pastor, musician, and author Craig Smith on the 365-day devotional Awake in the Dawn and the companion album.","youtube":"","links":[]},
+  {"id":"moriba-jah","date":"2022-10-20","season":"Later","title":"Privateer Space — Dr. Moriba Jah","guest":"Dr. Moriba Jah","category":"Space","minutes":"20:39","summary":"Privateer chief scientist Dr. Moriba Jah on space debris and keeping orbit usable as satellite traffic grows.","youtube":"","links":[]},
+  {"id":"timothy-mahoney","date":"2022-10-06","season":"Later","title":"Journey to Mount Sinai — Timothy Mahoney","guest":"Timothy Mahoney","category":"Faith","minutes":"24:56","summary":"Filmmaker Timothy Mahoney on the investigation following the route from the sea crossing toward Mount Sinai.","youtube":"","links":[]},
+  {"id":"air-supply","date":"2022-10-06","season":"Later","title":"Air Supply — Graham Russell","guest":"Graham Russell","category":"Music","minutes":"25:07","summary":"Graham Russell on The Lost in Love Experience, meeting Russell Hitchcock in Jesus Christ Superstar, and the songs that defined Air Supply.","youtube":"https://www.youtube.com/watch?v=n4WQUPSCkPM","links":["https://airsupplymusic.com/"]},
+  {"id":"fee-waybill-2022","date":"2022-08-11","season":"Later","title":"The Tubes — Fee Waybill","guest":"Fee Waybill","category":"Music","minutes":"21:00","summary":"Fee Waybill on The Tubes, Outside Inside, “She’s a Beauty,” and the solo album Fee Waybill Rides Again.","youtube":"","links":["https://www.thetubes.com/"]},
+  {"id":"jude-cole","date":"2021-11-23","season":"4","episode":"13","title":"Jude Cole","guest":"Jude Cole","category":"Music","minutes":"18:52","summary":"Singer, songwriter, sideman, film composer, and producer Jude Cole on Coup De Main, Coolerator, and “Baby It’s Tonight.”","youtube":"","links":[]},
+  {"id":"will-turpin","date":"2021-11-09","season":"4","episode":"12","title":"Collective Soul — Will Turpin","guest":"Will Turpin","category":"Music","minutes":"16:01","summary":"Collective Soul bassist Will Turpin, Georgia Music Hall of Fame member, on the band and the songs.","youtube":"","links":[]},
+  {"id":"thomas-marshburn","date":"2021-10-25","season":"4","episode":"11","title":"SpaceX Crew-3 — Dr. Thomas Marshburn","guest":"Dr. Thomas Marshburn","category":"Space","minutes":"20:00","summary":"Crew Dragon pilot Dr. Thomas Marshburn on training and the Crew-3 mission.","youtube":"","links":[]},
+  {"id":"ben-barnes","date":"2021-10-19","season":"4","episode":"10","title":"Ben Barnes — Songs For You","guest":"Ben Barnes","category":"Film","minutes":"18:00","summary":"Actor and songwriter Ben Barnes on the EP Songs For You.","youtube":"","links":[]},
+  {"id":"roger-earl","date":"2021-10-06","season":"4","episode":"9","title":"Foghat — Roger Earl","guest":"Roger Earl","category":"Music","minutes":"18:00","summary":"Foghat co-founder and drummer Roger Earl on the band’s 50th anniversary and “Slow Ride.”","youtube":"","links":[]},
+  {"id":"alan-stern","date":"2020-11-24","season":"3","episode":"50","title":"Alan Stern — Virgin Galactic, New Horizons and Pluto","guest":"Dr. Alan Stern","category":"Space","minutes":"21:08","summary":"Planetary scientist Dr. Alan Stern on commercial spaceflight science, New Horizons, and Pluto.","youtube":"","links":[]},
+  {"id":"osiris-rex","date":"2020-11-17","season":"3","episode":"49","title":"OSIRIS-REx — Dr. Jason Dworkin","guest":"Dr. Jason P. Dworkin","category":"Space","minutes":"20:04","summary":"OSIRIS-REx project scientist Dr. Jason Dworkin on the October 20, 2020 sample collection at asteroid Bennu.","youtube":"","links":[]},
+  {"id":"sarah-noble","date":"2020-10-29","season":"3","episode":"48","title":"Water on the Moon — Sarah Noble","guest":"Sarah Noble","category":"Space","minutes":"13:37","summary":"Lunar geologist Sarah Noble on SOFIA confirming water on the sunlit surface of the Moon.","youtube":"","links":[]},
+  {"id":"mike-hopkins","date":"2020-10-06","season":"3","episode":"44","title":"SpaceX Crew-1 — Mike Hopkins","guest":"Mike Hopkins","category":"Space","minutes":"24:13","summary":"Commander Mike Hopkins on Crew-1, training, and commanding the mission. Recorded by phone on September 29, 2020.","youtube":"","links":[]},
+  {"id":"fee-waybill","date":"2020-09-29","season":"3","episode":"43","title":"Fee Waybill Rides Again","guest":"Fee Waybill","category":"Music","minutes":"14:51","summary":"Lead singer of The Tubes since 1972 on the band’s classic hits and a return to the road.","youtube":"","links":["https://www.thetubes.com/"]},
+  {"id":"jesse-colin-young","date":"2020-09-22","season":"3","episode":"42","title":"Jesse Colin Young","guest":"Jesse Colin Young","category":"Music","minutes":"14:02","summary":"Jesse Colin Young on “Get Together,” “Dreamers,” and coffee.","youtube":"","links":[]},
+  {"id":"cindy-blackman","date":"2020-09-15","season":"3","episode":"41","title":"Cindy Blackman Santana","guest":"Cindy Blackman Santana","category":"Music","minutes":"21:30","summary":"Drummer Cindy Blackman Santana on “Give the Drummer Some.”","youtube":"","links":[]},
+  {"id":"zoe-perry","date":"2020-09-08","season":"3","episode":"40","title":"Zoe Perry — Young Sheldon","guest":"Zoe Perry","category":"Film","minutes":"15:39","summary":"Young Sheldon’s Mary Cooper, Zoe Perry, on Everyday Miracles.","youtube":"","links":[]},
+  {"id":"kate-pierson","date":"2020-08-25","season":"3","episode":"39","title":"The B-52’s — Kate Pierson","guest":"Kate Pierson","category":"Music","minutes":"18:03","summary":"Kate Pierson on The B-52’s, the world’s greatest party band.","youtube":"","links":[]},
+  {"id":"jake-shimabukuro","date":"2020-08-18","season":"3","episode":"38","title":"Jake Shimabukuro","guest":"Jake Shimabukuro","category":"Music","minutes":"22:14","summary":"Ukulele virtuoso Jake Shimabukuro on rocking an instrument most people underestimate.","youtube":"","links":[]},
+  {"id":"jane-wiedlin","date":"2020-07-31","season":"3","episode":"36","title":"The Go-Go’s — Jane Wiedlin","guest":"Jane Wiedlin","category":"Music","minutes":"21:44","summary":"Jane Wiedlin on Club Zero, punk rock, Star Trek, and the Showtime documentary.","youtube":"","links":[]},
+  {"id":"koichi-wakata","date":"2020-07-21","season":"3","episode":"34","title":"JAXA — Dr. Koichi Wakata","guest":"Dr. Koichi Wakata","category":"Space","minutes":"19:38","summary":"Astronaut Dr. Koichi Wakata on JAXA, the space station, and Japan’s exploration program.","youtube":"","links":[]},
+  {"id":"ingenuity","date":"","season":"4","title":"Mars Helicopter Ingenuity — Bob Balaram","guest":"Bob Balaram","category":"Space","minutes":"21:39","summary":"Ingenuity chief engineer Bob Balaram on the first helicopter to fly on another planet. Episode date was not in the captures used for this archive.","youtube":"https://www.youtube.com/watch?v=fpJ3AQkVYfA","links":[]},
+  {"id":"eric-close","date":"","season":"Later","title":"Eric Close — The Mulligan","guest":"Eric Close","category":"Film","minutes":"16:37","summary":"Actor Eric Close on The Mulligan, a faith and family film about second chances. Episode date was not in the captures used for this archive.","youtube":"https://www.youtube.com/watch?v=_4AUDIa2MUc","links":[]}
+]
+;
+  const list = document.getElementById("episode-list");
+  function formatDate(iso) {
+    if (!iso) return "Date not in the capture";
+    return new Date(iso + "T12:00:00").toLocaleDateString("en-US", {month:"long", day:"numeric", year:"numeric"});
+  }
+  episodes.sort((a,b) => (b.date||"") < (a.date||"") ? -1 : 1);
+  list.innerHTML = episodes.map(ep => {
+    const season = ep.season === "Later" ? "Later special" : "Season " + ep.season;
+    const watch = ep.youtube ? `<a href="${ep.youtube}">Watch</a>` : `<a href="https://www.youtube.com/@youronlinecoffeebreak">YouTube channel</a>`;
+    return `<article class="episode"><div class="meta"><span>${formatDate(ep.date)}</span><span>${season}</span><span>${ep.category}</span><span>${ep.minutes}</span></div><h3>${ep.title}</h3><p>${ep.summary}</p><p>${watch}</p></article>`;
+  }).join("");
+  </script>
+</body>
+</html>
